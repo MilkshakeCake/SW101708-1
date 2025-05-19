@@ -1,4 +1,8 @@
 ## Software Engineering - 윤대현 C017086
+
+- Code: 91800
+- Github URL: https://github.com/MilkshakeCake/SW101708-1
+
 ---
 ### Requirement List
 ---

@@ -13,9 +13,7 @@
 **Actor** : Administrator
 1. System displays entry point for bicycle ID and model name.
 2. Actor enters required information.
-3. System displays entered information for confirmation.
-4. Actor confirms that entered information is correct.
-5. System displays message that shows bicycle registration process is complete.
+3. System displays message that shows bicycle registration process is complete.
 
 ---
 #### Use Case : Log In
@@ -33,8 +31,7 @@
 ---
 #### Use Case : Query Rented Bicycle Information
 **Actor** : Member
-1. System displays list of bicycles currently rented by member.
-    each entry has bicycle ID & model number.
+1. System displays list of bicycles currently rented by member. each entry has bicycle ID & model number.
 
 ---
 #### Use Case : Rent Bicycle
