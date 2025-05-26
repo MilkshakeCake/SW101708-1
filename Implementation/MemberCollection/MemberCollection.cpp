@@ -1,5 +1,11 @@
 #include "MemberCollection.h"
 
+MemberCollection::MemberCollection()
+{
+    Member *admin = new Member("admin", "admin", "");
+    members.push_back(*admin);
+}
+
 const std::string MemberCollection::getCurrentMember() const
 {
     return currentMember;

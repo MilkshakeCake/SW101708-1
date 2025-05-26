@@ -2,7 +2,7 @@
 #define LOGIN_H
 
 #include <string>
-#include "MemberCollection.h"
+#include "../MemberCollection/MemberCollection.h"
 
 class LoginUI;
 
@@ -13,7 +13,14 @@ private:
     LoginUI *boundary;
 
 public:
+    // constructor and destructor
     Login(MemberCollection *collection);
+    ~Login();
+
+    // getter and setter
+    LoginUI *getBoundary();
+
+    // functional implementation
     bool login(const std::string &id, const std::string &pw);
 };
 

@@ -1,7 +1,7 @@
 #ifndef RENTBICYCLE_H
 #define RENTBICYCLE_H
 
-#include "BicycleCollection.h"
+#include "../BicycleCollection/BicycleCollection.h"
 
 class RentBicycleUI;
 
@@ -11,7 +11,14 @@ private:
     BicycleCollection *bicycleCollection;
     RentBicycleUI *boundary;
 public:
+    // constructor and destructor
     RentBicycle(BicycleCollection *collection);
+    ~RentBicycle();
+
+    // getter and setter
+    RentBicycleUI *getBoundary();
+
+    // functional implementation
     Bicycle rentBicycleByID(const std::string &id);
 };
 

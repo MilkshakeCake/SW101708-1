@@ -15,4 +15,4 @@ public:
     void createAccount(const std::string &id, const std::string &pw, const std::string &phone);
 };
 
-#endif
+#endif // SIGNUPUI_H

@@ -1,12 +1,21 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 
-#include "BicycleCollection.h"
-#include "MemberCollection.h"
-#include "SignUp.h"
-#include "Login.h"
-#include "LogOut.h"
-#include "RegisterBicycle.h"
+#include "BicycleCollection/BicycleCollection.h"
+#include "MemberCollection/MemberCollection.h"
+#include "SignUp/SignUp.h"
+#include "SignUp/SignUpUI.h"
+#include "Login/Login.h"
+#include "Login/LoginUI.h"
+#include "LogOut/LogOut.h"
+#include "LogOut/LogOutUI.h"
+#include "RegisterBicycle/RegisterBicycle.h"
+#include "RegisterBicycle/RegisterBicycleUI.h"
+#include "RentBicycle/RentBicycle.h"
+#include "RentBicycle/RentBicycleUI.h"
+#include "QueryBicycle/QueryBicycle.h"
+#include "QueryBicycle/QueryBicycleUI.h"
 
 // DECLARE CONSTANTS
 #define MAX_STRING 32
@@ -14,13 +23,12 @@
 #define OUTPUT_FILE_NAME "output.txt"
 
 // DECLARE FUNCTIONS
-void doTask();
-void join();
-void program_exit();
+void doTask(BicycleCollection *bCollection, MemberCollection *mCollection);
+void program_exit(BicycleCollection *bCollection, MemberCollection *mCollection);
 
 // DECLARE VARIABLES
-fstream out_fp;
-fstream in_fp;
+std::fstream out_fp;
+std::fstream in_fp;
 
 using namespace std;
 
@@ -30,10 +38,10 @@ int main()
     in_fp.open(INPUT_FILE_NAME);
     out_fp.open(OUTPUT_FILE_NAME);
 
-    BicycleCollection bicycleData;
-    MemberCollection memberData;
+    BicycleCollection *bCollection = new BicycleCollection();
+    MemberCollection *mCollection = new MemberCollection();
 
-    doTask();
+    doTask(bCollection, mCollection);
 
     out_fp.close();
     in_fp.close();
@@ -41,7 +49,7 @@ int main()
     return 0;
 }
 
-void doTask()
+void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
 {
     // 메뉴 파싱을 위한 level 구분을 위한 변수
     int menu_level_1 = 0, menu_level_2 = 0;
@@ -55,57 +63,135 @@ void doTask()
         // 메뉴 구분 및 해당 연산 수행
         switch (menu_level_1)
         {
+        // 1
         case 1:
         {
             switch (menu_level_2)
             {
-            case 1: // "1.1. 회원가입“ 메뉴 부분
+            // 1.1
+            case 1:
             {
-                // 해당 기능 수행
-                
+                string id, pw, phone;
+                in_fp >> id >> pw >> phone;
+                SignUp signUpControl(mCollection);
+                SignUpUI *signUpBoundary = signUpControl.getBoundary();
+                signUpBoundary->createAccount(id, pw, phone);
                 break;
             }
+            // 1.2 - Nonexistent input case
             case 2:
             {
-
                 break;
             }
             }
+        }
+        // 2
         case 2:
-        
-        case 7:
         {
             switch (menu_level_2)
             {
-            case 1: // "6.1. 종료“ 메뉴 부분
+            // 2.1 : log in
+            case 1:
+            {
+                string id, pw;
+                in_fp >> id >> pw;
+                Login loginControl(mCollection);
+                LoginUI *loginBoundary = loginControl.getBoundary();
+                loginBoundary->login(id, pw);
+                break;
+            }
+
+            // 2.2 : log out
+            case 2:
+            {
+                LogOut logOutControl(mCollection);
+                LogOutUI *logOutBoundary = logOutControl.getBoundary();
+                logOutBoundary->logOut();
+                break;
+            }
+            }
+        }
+
+        // 3
+        case 3:
+        {
+            switch (menu_level_2)
+            {
+            // 3.1 : register bicycle
+            case 1:
+            {
+                string id, maker;
+                in_fp >> id >> maker;
+                RegisterBicycle registerBicycleControl(bCollection);
+                RegisterBicycleUI *registerBicycleBoundary = registerBicycleControl.getBoundary();
+                registerBicycleBoundary->addBicycle(id, maker);
+                break;
+            }
+            default:
+            {
+                break;
+            }
+            }
+        }
+
+        // 4
+        case 4:
+        {
+            switch (menu_level_2)
+            {
+            // 4.1 : rent bicycle
+            case 1:
+            {
+                string id;
+                in_fp >> id;
+                RentBicycle rentBicycleControl(bCollection);
+                RentBicycleUI *rentBicycleBoundary = rentBicycleControl.getBoundary();
+                rentBicycleBoundary->rentBicycleByID(id);
+                break;
+            }
+            default:
+                break;
+            }
+        }
+
+        case 5:
+        {
+            switch (menu_level_2)
+            {
+            // 5.1 : query bicycle list
+            case 1:
+            {
+                QueryBicycle queryBicycleControl(bCollection);
+                QueryBicycleUI *queryBicycleBoundary = queryBicycleControl.getBoundary();
+                queryBicycleBoundary->queryBicycleList();
+                break;
+            }
+            default:
+                break;
+            }
+        }
+
+        // 6
+        case 6:
+        {
+            switch (menu_level_2)
+            {
+            // 6.1 : exit program
+            case 1:
             {
                 is_program_exit = 1;
                 break;
-                ;
             }
             }
-        }
         }
         }
     }
+
+    program_exit(bCollection, mCollection);
 }
 
-/*
- * 단순히 파일을 통해 입출력하는 방법을 보이기 위한 것이므로 실제 이 함수를 사용하면 안됨.
- * 위의 switch 문에서 control 및 boundary class를 이용해서 이 기능이 구현되도록 해야 함.
-void join()
+void program_exit(BicycleCollection *bCollection, MemberCollection *mCollection)
 {
-
-    char user_type[MAX_STRING], name[MAX_STRING], SSN[MAX_STRING],
-        address[MAX_STRING], ID[MAX_STRING], password[MAX_STRING];
-
-    // 입력 형식 : 이름, 주민번호, ID, Password를 파일로부터 읽음
-    in_fp >> name >> SSN >> ID >> password;
-
-    // 해당 기능 수행
-
-    // 출력 형식
-    out_fp << "1.1. 회원가입" << endl;
-    out_fp << name << SSN << ID << password << endl;
+    delete bCollection;
+    delete mCollection;
 }
-*/

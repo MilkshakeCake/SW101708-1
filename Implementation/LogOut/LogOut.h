@@ -1,7 +1,7 @@
 #ifndef LOGOUT_H
 #define LOGOUT_H
 
-#include "MemberCollection.h"
+#include "../MemberCollection/MemberCollection.h"
 #include <string>
 
 class LogOutUI;
@@ -13,8 +13,15 @@ private:
     LogOutUI *boundary;
 
 public:
+    // constructor and destructor
     LogOut(MemberCollection *collection);
+    ~LogOut();
+
+    // getter and setter
+    LogOutUI *getBoundary();
+
+    // functional implementation
     std::string logOut();
 };
 
-#endif
+#endif // LOGOUT_H

@@ -2,7 +2,7 @@
 #define MEMBERCOLLECTION_H
 
 #include <vector>
-#include "Member.h"
+#include "../Member/Member.h"
 
 class MemberCollection
 {
@@ -11,14 +11,17 @@ private:
     std::vector<Member> members;
 
 public:
-// getter functions
+    // constructor and destructor
+    MemberCollection();
+
+    // getter and setter
     const std::string getCurrentMember() const;
     const std::vector<Member> &getMembers() const;
 
-// functional implementations
+    // functional implementation
     void logOut();
     void addMember(const Member &member);
     bool validateLogin(const std::string &id, const std::string &pw);
 };
 
-#endif
+#endif // MEMBERCOLLECTION_H

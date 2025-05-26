@@ -2,7 +2,7 @@
 #define SIGNUP_H
 
 #include <string>
-#include "MemberCollection.h"
+#include "../MemberCollection/MemberCollection.h"
 
 class SignUpUI;
 
@@ -13,9 +13,16 @@ private:
     SignUpUI *boundary;
 
 public:
+    // constructor and destructor
     SignUp(MemberCollection *collection);
+    ~SignUp();
+
+    // getter and setter
+    SignUpUI *getBoundary();
+
+    // functional implementation
     void addMember(const std::string &id, const std::string &pw, const std::string &phone);
     bool validateSignUp(const std::string &id, const std::string &pw);
 };
 
-#endif
+#endif // SIGNUP_H

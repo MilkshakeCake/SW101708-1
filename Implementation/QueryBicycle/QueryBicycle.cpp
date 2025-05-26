@@ -1,10 +1,22 @@
 #include "QueryBicycle.h"
 #include "QueryBicycleUI.h"
 
-QueryBicycle::QueryBicycle(BicycleCollection *collection) : bicycleCollection(collection) {
+QueryBicycle::QueryBicycle(BicycleCollection *collection) : bicycleCollection(collection)
+{
     boundary = new QueryBicycleUI(this);
 }
 
-std::vector<Bicycle> QueryBicycle::showBicycleList() {
+QueryBicycle::~QueryBicycle()
+{
+    delete boundary;
+}
+
+QueryBicycleUI *QueryBicycle::getBoundary()
+{
+    return boundary;
+}
+
+std::vector<Bicycle> QueryBicycle::showBicycleList()
+{
     return bicycleCollection->getRentedBicycles();
 }

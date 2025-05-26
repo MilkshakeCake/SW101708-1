@@ -1,8 +1,18 @@
 #include "LogOut.h"
 #include "LogOutUI.h"
 
-LogOut::LogOut(MemberCollection *collection) : memberCollection(collection) {
+LogOut::LogOut(MemberCollection *collection) : memberCollection(collection)
+{
     this->boundary = new LogOutUI(this);
+}
+
+LogOut::~LogOut() {
+    delete boundary;
+}
+
+LogOutUI *LogOut::getBoundary()
+{
+    return boundary;
 }
 
 std::string LogOut::logOut()

@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/yoondaehyun/Repositories/SW101708-1",
-      "program": "/Users/yoondaehyun/Repositories/SW101708-1/build/Debug/outDebug"
+      "cwd": "/Users/yoondaehyun/Repositories/SW101708-1/Implementation",
+      "program": "/Users/yoondaehyun/Repositories/SW101708-1/Implementation/build/Debug/outDebug"
     }
   ]
 }

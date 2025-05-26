@@ -13,4 +13,4 @@ public:
     void logOut();
 };
 
-#endif
+#endif // LOGOUTUI_H

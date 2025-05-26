@@ -1,10 +1,22 @@
 #include "RegisterBicycle.h"
 #include "RegisterBicycleUI.h"
 
-RegisterBicycle::RegisterBicycle(BicycleCollection *bicycleCollection) : collection(bicycleCollection) {
+RegisterBicycle::RegisterBicycle(BicycleCollection *bicycleCollection) : collection(bicycleCollection)
+{
     boundary = new RegisterBicycleUI(this);
 }
 
-void RegisterBicycle::createBicycleEntry(Bicycle registeringBicycle) {
+RegisterBicycle::~RegisterBicycle()
+{
+    delete boundary;
+}
+
+RegisterBicycleUI *RegisterBicycle::getBoundary()
+{
+    return boundary;
+}
+
+void RegisterBicycle::createBicycleEntry(Bicycle registeringBicycle)
+{
     collection->addBicycle(registeringBicycle);
 }

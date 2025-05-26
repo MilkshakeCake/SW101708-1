@@ -1,7 +1,7 @@
 #ifndef REGISTERBICYCLE_H
 #define REGISTERBICYCLE_H
 
-#include "BicycleCollection.h"
+#include "../BicycleCollection/BicycleCollection.h"
 
 class RegisterBicycleUI;
 
@@ -10,7 +10,14 @@ private:
     BicycleCollection *collection;
     RegisterBicycleUI *boundary;
 public:
+    // constructor and destructor
     RegisterBicycle(BicycleCollection *bicycleCollection);
+    ~RegisterBicycle();
+
+    // getter and setter
+    RegisterBicycleUI *getBoundary();
+
+    // functional implementation
     void createBicycleEntry(Bicycle registeringBicycle);
 };
 

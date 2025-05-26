@@ -1,7 +1,7 @@
 #ifndef QUERYBICYCLE_H
 #define QUERYBICYCLE_H
 
-#include "BicycleCollection.h"
+#include "../BicycleCollection/BicycleCollection.h"
 
 class QueryBicycleUI;
 
@@ -12,8 +12,15 @@ private:
     QueryBicycleUI *boundary;
 
 public:
+    // constructor and destructor
     QueryBicycle(BicycleCollection *collection);
+    ~QueryBicycle();
+
+    // getter and setter
+    QueryBicycleUI *getBoundary();
+
+    // functional implementation
     std::vector<Bicycle> showBicycleList();
 };
 
-#endif
+#endif // QUERYBICYCLE_H

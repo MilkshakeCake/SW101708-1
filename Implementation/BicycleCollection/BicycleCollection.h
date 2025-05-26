@@ -2,7 +2,7 @@
 #define BICYCLECOLLECTION_H
 
 #include <vector>
-#include "Bicycle.h"
+#include "../Bicycle/Bicycle.h"
 
 class BicycleCollection
 {
@@ -11,7 +11,10 @@ private:
     std::vector<Bicycle> bicycles;
 
 public:
+    // getter and setter
     std::vector<Bicycle> getRentedBicycles();
+
+    // functional implementation
     void addBicycle(Bicycle &newBicycle);
     Bicycle rentBicycle(const std::string &id);
 };

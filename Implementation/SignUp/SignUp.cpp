@@ -6,6 +6,16 @@ SignUp::SignUp(MemberCollection *collection) : memberCollection(collection)
     boundary = new SignUpUI(this);
 }
 
+SignUp::~SignUp()
+{
+    delete boundary;
+}
+
+SignUpUI *SignUp::getBoundary()
+{
+    return boundary;
+}
+
 void SignUp::addMember(const std::string &id, const std::string &pw, const std::string &phone)
 {
     if (!validateSignUp(id, pw))
@@ -18,7 +28,8 @@ void SignUp::addMember(const std::string &id, const std::string &pw, const std::
 
 bool SignUp::validateSignUp(const std::string &id, const std::string &pw)
 {
-    if (id.empty() || pw.empty()) return false;
+    if (id.empty() || pw.empty())
+        return false;
     for (Member i : memberCollection->getMembers())
     {
         if (i.getMemberID() == id)
