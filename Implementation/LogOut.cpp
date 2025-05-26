@@ -1,6 +1,6 @@
 #include "LogOut.h"
+
 #include "LogOutUI.h"
-#include <iostream>
 
 LogOut::LogOut(MemberCollection *collection) : memberCollection(collection)
 {
@@ -11,7 +11,7 @@ LogOut::~LogOut() {
     delete boundary;
 }
 
-LogOutUI *LogOut::getBoundary()
+LogOutUI *LogOut::getBoundary() const
 {
     return boundary;
 }

@@ -12,8 +12,11 @@ private:
     bool isAdmin;
 
 public:
-    Member(const std::string &id, const std::string &pw, const std::string &phone)
-        : memberID(id), memberPW(pw), memberPhoneNumber(phone), isAdmin(false) {};
+    // Constructor
+    Member(const std::string &id, const std::string &pw, const std::string &phone = "", bool admin = false)
+        : memberID(id), memberPW(pw), memberPhoneNumber(phone), isAdmin(admin) {};
+    
+    // getter functions
     std::string getMemberID() const;
     std::string getMemberPW() const;
     std::string getMemberPhoneNumber() const;

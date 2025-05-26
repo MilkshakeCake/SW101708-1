@@ -1,4 +1,5 @@
 #include "RegisterBicycle.h"
+
 #include "RegisterBicycleUI.h"
 
 RegisterBicycle::RegisterBicycle(BicycleCollection *bicycleCollection) : collection(bicycleCollection)
@@ -16,7 +17,7 @@ RegisterBicycleUI *RegisterBicycle::getBoundary()
     return boundary;
 }
 
-void RegisterBicycle::createBicycleEntry(Bicycle registeringBicycle)
+void RegisterBicycle::createBicycleEntry(const std::string &id, const std::string &maker)
 {
-    collection->addBicycle(registeringBicycle);
+    collection->addBicycle(id, maker);
 }

@@ -14,11 +14,11 @@ public:
     RegisterBicycle(BicycleCollection *bicycleCollection);
     ~RegisterBicycle();
 
-    // getter and setter
+    // Get boundary class reference
     RegisterBicycleUI *getBoundary();
 
     // functional implementation
-    void createBicycleEntry(Bicycle registeringBicycle);
+    void createBicycleEntry(const std::string &id, const std::string &maker);
 };
 
 #endif // REGISTERBICYCLE_H

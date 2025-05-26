@@ -8,14 +8,15 @@ class Bicycle
 private:
     std::string id;
     std::string maker;
-    bool isRented;
 
 public:
-    Bicycle(const std::string &id, const std::string &maker) : id(id), maker(maker), isRented(false) {};
-    std::string getID();
-    std::string getMaker();
-    bool getIsRented();
-    void setIsRented(bool status);
+    // constructor
+    Bicycle(const std::string &id, const std::string &maker) : id(id), maker(maker) {};
+
+    // Get ID
+    std::string getID() const;
+    // Get maker
+    std::string getMaker() const;
 };
 
 #endif

@@ -5,12 +5,17 @@
 
 class RentBicycle;
 
-class RentBicycleUI {
-    private:
+class RentBicycleUI
+{
+private:
+    // Boundary class holds control reference to call function
     RentBicycle *controller;
-    public:
+
+public:
+    // Constructor
     RentBicycleUI(RentBicycle *rentBicycleController);
+    // Call control 
     void rentBicycleByID(const std::string &id);
 };
 
-#endif //RENTBICYCLEUI_H
+#endif // RENTBICYCLEUI_H

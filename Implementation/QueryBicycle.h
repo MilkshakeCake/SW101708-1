@@ -12,15 +12,16 @@ private:
     QueryBicycleUI *boundary;
 
 public:
-    // constructor and destructor
+    // Constructor
     QueryBicycle(BicycleCollection *collection);
+    // Destructor
     ~QueryBicycle();
 
-    // getter and setter
+    // Get boundary class reference
     QueryBicycleUI *getBoundary();
 
-    // functional implementation
-    std::vector<Bicycle> showBicycleList();
+    // return list of bicycles
+    std::vector<Bicycle> showRentedBicycleList();
 };
 
 #endif // QUERYBICYCLE_H

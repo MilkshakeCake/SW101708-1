@@ -2,11 +2,11 @@
 
 MemberCollection::MemberCollection()
 {
-    Member *admin = new Member("admin", "admin", "");
+    Member *admin = new Member("admin", "admin", "", true);
     members.push_back(*admin);
 }
 
-const std::string MemberCollection::getCurrentMember() const
+std::string MemberCollection::getCurrentMember() const
 {
     return currentMember;
 }
@@ -15,33 +15,15 @@ void MemberCollection::setCurrentMember(const std::string &userID) {
     currentMember = userID;
 }
 
-const std::vector<Member> &MemberCollection::getMembers() const
-{
-    return members;
-}
-
 void MemberCollection::logOut()
 {
     currentMember = "";
     return;
 }
 
-void MemberCollection::addMember(const Member &member)
+void MemberCollection::addMember(const std::string &id, const std::string &pw, const std::string &phone)
 {
-    members.push_back(member);
+    Member newMember(id, pw, phone);
+    members.push_back(newMember);
     return;
-}
-
-bool MemberCollection::validateLogin(const std::string &id, const std::string &pw)
-{
-    for (Member &i : members)
-    {
-        if (i.getMemberID() != id)
-            continue;
-        if (i.getMemberPW() == pw)
-        {
-            return true;
-        }
-    }
-    return false;
 }

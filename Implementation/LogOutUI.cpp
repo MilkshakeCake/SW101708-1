@@ -1,6 +1,8 @@
 #include "LogOutUI.h"
-#include "LogOut.h"
+
 #include <fstream>
+
+#include "LogOut.h"
 extern std::ofstream out_fp;
 
 LogOutUI::LogOutUI(LogOut *logOutController)

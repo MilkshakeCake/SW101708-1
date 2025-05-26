@@ -1,6 +1,8 @@
 #include "RentBicycle.h"
-#include "RentBicycleUI.h"
+
 #include <fstream>
+
+#include "RentBicycleUI.h"
 extern std::ofstream out_fp;
 
 RentBicycleUI::RentBicycleUI(RentBicycle *rentBicycleController)

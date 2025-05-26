@@ -7,22 +7,23 @@
 class MemberCollection
 {
 private:
+    // status variable to hold currently logged in member
+    // cannot hold in control since multiple controls need access to the status variable
     std::string currentMember;
     std::vector<Member> members;
 
 public:
-    // constructor and destructor
+    // Constructor
     MemberCollection();
 
-    // getter and setter
-    const std::string getCurrentMember() const;
+    // Get current member
+    std::string getCurrentMember() const;
+    // Set current member
     void setCurrentMember(const std::string &userID);
-    const std::vector<Member> &getMembers() const;
 
     // functional implementation
     void logOut();
-    void addMember(const Member &member);
-    bool validateLogin(const std::string &id, const std::string &pw);
+    void addMember(const std::string &id, const std::string &pw, const std::string &phone);
 };
 
 #endif // MEMBERCOLLECTION_H

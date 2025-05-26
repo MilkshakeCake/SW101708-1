@@ -7,15 +7,19 @@
 class BicycleCollection
 {
 private:
+    // keep track of rented Bicycles to prepare query
     std::vector<Bicycle> rentedBicycles;
+    // keep track of total registered bicycles
     std::vector<Bicycle> bicycles;
 
 public:
-    // getter and setter
-    std::vector<Bicycle> getRentedBicycles();
+    // Getter for rentedBicycles
+    std::vector<Bicycle> getRentedBicycles() const;
 
-    // functional implementation
-    void addBicycle(Bicycle &newBicycle);
+    // bicycle register functionality
+    void addBicycle(const std::string &id, const std::string &maker);
+
+    // bicycle rent functionality
     Bicycle rentBicycle(const std::string &id);
 };
 

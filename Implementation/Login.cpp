@@ -10,16 +10,10 @@ Login::~Login() {
     delete boundary;
 }
 
-bool Login::login(const std::string &id, const std::string &pw)
+void Login::login(const std::string &id, const std::string &pw)
 {
-    bool loginSuccess = memberCollection->validateLogin(id, pw);
-    if(loginSuccess) {
-        memberCollection->setCurrentMember(id);
-    }
-    
-    return loginSuccess;
+    memberCollection->setCurrentMember(id);
 }
-
 
 LoginUI *Login::getBoundary()
 {

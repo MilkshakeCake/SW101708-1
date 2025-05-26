@@ -2,6 +2,7 @@
 #define SIGNUP_H
 
 #include <string>
+
 #include "MemberCollection.h"
 
 class SignUpUI;
@@ -17,12 +18,11 @@ public:
     SignUp(MemberCollection *collection);
     ~SignUp();
 
-    // getter and setter
+    // Get boundary class reference
     SignUpUI *getBoundary();
 
     // functional implementation
     void addMember(const std::string &id, const std::string &pw, const std::string &phone);
-    bool validateSignUp(const std::string &id, const std::string &pw);
 };
 
 #endif // SIGNUP_H

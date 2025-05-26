@@ -4,6 +4,7 @@
 #include "MemberCollection.h"
 #include <string>
 
+// Forward Declaration
 class LogOutUI;
 
 class LogOut
@@ -13,12 +14,13 @@ private:
     LogOutUI *boundary;
 
 public:
-    // constructor and destructor
+    // Constructor
     LogOut(MemberCollection *collection);
+    // Destructor
     ~LogOut();
 
-    // getter and setter
-    LogOutUI *getBoundary();
+    // Get boundary class reference
+    LogOutUI *getBoundary() const;
 
     // functional implementation
     std::string logOut();

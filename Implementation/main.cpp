@@ -16,6 +16,8 @@
 #include "RentBicycleUI.h"
 #include "QueryBicycle.h"
 #include "QueryBicycleUI.h"
+#include "ProgramExit.h"
+#include "ProgramExitUI.h"
 
 // DECLARE CONSTANTS
 #define MAX_STRING 32
@@ -24,7 +26,6 @@
 
 // DECLARE FUNCTIONS
 void doTask(BicycleCollection *bCollection, MemberCollection *mCollection);
-void program_exit(BicycleCollection *bCollection, MemberCollection *mCollection);
 
 // DECLARE VARIABLES
 std::fstream out_fp;
@@ -34,15 +35,17 @@ using namespace std;
 
 int main()
 {
-    // INITIALIZE FOR FILE MANIPULATION
+    // Initialize file streams for input and output operations
     in_fp.open(INPUT_FILE_NAME);
     out_fp.open(OUTPUT_FILE_NAME);
 
+    // Create collections to manage bicycles and members
     BicycleCollection *bCollection = new BicycleCollection();
     MemberCollection *mCollection = new MemberCollection();
 
     doTask(bCollection, mCollection);
 
+    // Close file streams before program termination
     out_fp.close();
     in_fp.close();
 
@@ -51,20 +54,19 @@ int main()
 
 void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
 {
-    // 메뉴 파싱을 위한 level 구분을 위한 변수
+    // Variable to determine when to exit the program
     int menu_level_1 = 0, menu_level_2 = 0;
     int is_program_exit = 0;
 
     while (!is_program_exit)
     {
-        int menu_level_1 = 0, menu_level_2 = 0;
-
-        // 입력파일에서 메뉴 숫자 2개를 읽기
+        // Parse two integers from input file to determine menu selection
         in_fp >> menu_level_1 >> menu_level_2;
 
+        // Output the selected menu levels to output file
         out_fp << menu_level_1 << '.' << menu_level_2;
 
-        // 메뉴 구분 및 해당 연산 수행
+        // Route logic based on top-level menu selection
         switch (menu_level_1)
         {
         // 1
@@ -83,19 +85,14 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
                 signUpBoundary->createAccount(id, pw, phone);
                 continue;
             }
-            // 1.2 - Nonexistent input case
-            case 2:
-            {
-                continue;
-            }
             }
         }
-        // 2
+        // 2 : Log in / Log out
         case 2:
         {
             switch (menu_level_2)
             {
-            // 2.1 : log in
+            // 2.1 : Log in
             case 1:
             {
                 out_fp << ". 로그인\n";
@@ -107,7 +104,7 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
                 continue;
             }
 
-            // 2.2 : log out
+            // 2.2 : Log out
             case 2:
             {
                 out_fp << ". 로그아웃\n";
@@ -124,7 +121,7 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
         {
             switch (menu_level_2)
             {
-            // 3.1 : register bicycle
+            // 3.1 : Register Bicycle
             case 1:
             {
                 out_fp << ". 자전거 등록\n";
@@ -135,10 +132,6 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
                 registerBicycleBoundary->addBicycle(id, maker);
                 continue;
             }
-            default:
-            {
-                continue;
-            }
             }
         }
 
@@ -147,7 +140,7 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
         {
             switch (menu_level_2)
             {
-            // 4.1 : rent bicycle
+            // 4.1 : Rent Bicycle
             case 1:
             {
                 out_fp << ". 자전거 대여\n";
@@ -158,16 +151,15 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
                 rentBicycleBoundary->rentBicycleByID(id);
                 continue;
             }
-            default:
-                continue;
             }
         }
 
+        // 5
         case 5:
         {
             switch (menu_level_2)
             {
-            // 5.1 : query bicycle list
+            // 5.1 : Query Rented Bicycle List
             case 1:
             {
                 out_fp << ". 자전거 대여 리스트\n";
@@ -176,12 +168,10 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
                 queryBicycleBoundary->queryBicycleList();
                 continue;
             }
-            default:
-                continue;
             }
         }
 
-        // 6
+        // 6 : Exit program
         case 6:
         {
             switch (menu_level_2)
@@ -189,20 +179,15 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
             // 6.1 : exit program
             case 1:
             {
-                out_fp << ". 종료\n";
+                out_fp << ". 종료";
                 is_program_exit = 1;
-                continue;
+                ProgramExit programExitControl;
+                ProgramExitUI *programExitBoundary = programExitControl.getBoundary();
+                programExitBoundary->shutDown(bCollection, mCollection);
+                break;
             }
             }
         }
         }
     }
-
-    program_exit(bCollection, mCollection);
-}
-
-void program_exit(BicycleCollection *bCollection, MemberCollection *mCollection)
-{
-    delete bCollection;
-    delete mCollection;
 }

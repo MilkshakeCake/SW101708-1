@@ -15,7 +15,7 @@ public:
     RentBicycle(BicycleCollection *collection);
     ~RentBicycle();
 
-    // getter and setter
+    // Get boundary class reference
     RentBicycleUI *getBoundary();
 
     // functional implementation

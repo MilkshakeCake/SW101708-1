@@ -4,24 +4,27 @@
 #include <string>
 #include "MemberCollection.h"
 
+// Forward Declaration
 class LoginUI;
 
 class Login
 {
 private:
+    // Control class holds reference to entity and boundary classes
     MemberCollection *memberCollection;
     LoginUI *boundary;
 
 public:
-    // constructor and destructor
+    // Constructor
     Login(MemberCollection *collection);
+    // Deconstructor
     ~Login();
 
-    // getter and setter
+    // Get boundary class reference
     LoginUI *getBoundary();
 
-    // functional implementation
-    bool login(const std::string &id, const std::string &pw);
+    // Log in functionality
+    void login(const std::string &id, const std::string &pw);
 };
 
 #endif // LOGIN_H

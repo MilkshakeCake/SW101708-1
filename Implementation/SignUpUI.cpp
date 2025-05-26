@@ -1,6 +1,8 @@
 #include "SignUpUI.h"
-#include "SignUp.h"
+
 #include <fstream>
+
+#include "SignUp.h"
 extern std::ofstream out_fp;
 
 SignUpUI::SignUpUI(SignUp *signUpController)
