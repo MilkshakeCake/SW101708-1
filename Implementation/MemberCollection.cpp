@@ -11,6 +11,10 @@ const std::string MemberCollection::getCurrentMember() const
     return currentMember;
 }
 
+void MemberCollection::setCurrentMember(const std::string &userID) {
+    currentMember = userID;
+}
+
 const std::vector<Member> &MemberCollection::getMembers() const
 {
     return members;

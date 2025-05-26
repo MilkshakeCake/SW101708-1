@@ -2,7 +2,7 @@
 #define LOGIN_H
 
 #include <string>
-#include "../MemberCollection/MemberCollection.h"
+#include "MemberCollection.h"
 
 class LoginUI;
 

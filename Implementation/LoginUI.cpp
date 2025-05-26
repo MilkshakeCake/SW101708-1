@@ -1,6 +1,7 @@
 #include "LoginUI.h"
 #include "Login.h"
-#include <iostream>
+#include <fstream>
+extern std::ofstream out_fp;
 
 LoginUI::LoginUI(Login *loginController) {
     this->controller = loginController;
@@ -9,5 +10,5 @@ LoginUI::LoginUI(Login *loginController) {
 void LoginUI::login(const std::string &id, const std::string &pw)
 {
     if (controller->login(id, pw))
-        std::cout << "> " << id << ' ' << pw << std::endl;
+        out_fp << "> " << id << ' ' << pw << std::endl << std::endl;
 }

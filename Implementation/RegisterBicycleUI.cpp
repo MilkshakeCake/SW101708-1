@@ -1,6 +1,7 @@
 #include "RegisterBicycleUI.h"
 #include "RegisterBicycle.h"
-#include <iostream>
+#include <fstream>
+extern std::ofstream out_fp;
 
 RegisterBicycleUI::RegisterBicycleUI(RegisterBicycle *registerBicycleController)
 {
@@ -11,5 +12,6 @@ void RegisterBicycleUI::addBicycle(const std::string &id, const std::string &mak
 {
     Bicycle registeringBicycle(id, maker);
     controller->createBicycleEntry(registeringBicycle);
-    std::cout << "> " << id << ' ' << maker << std::endl;
+    out_fp << "> " << id << ' ' << maker << std::endl
+           << std::endl;
 }

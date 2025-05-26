@@ -1,7 +1,7 @@
 #ifndef QUERYBICYCLE_H
 #define QUERYBICYCLE_H
 
-#include "../BicycleCollection/BicycleCollection.h"
+#include "BicycleCollection.h"
 
 class QueryBicycleUI;
 

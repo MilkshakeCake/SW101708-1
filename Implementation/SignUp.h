@@ -2,7 +2,7 @@
 #define SIGNUP_H
 
 #include <string>
-#include "../MemberCollection/MemberCollection.h"
+#include "MemberCollection.h"
 
 class SignUpUI;
 

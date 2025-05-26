@@ -1,5 +1,6 @@
 #include "LogOut.h"
 #include "LogOutUI.h"
+#include <iostream>
 
 LogOut::LogOut(MemberCollection *collection) : memberCollection(collection)
 {

@@ -1,7 +1,7 @@
 #ifndef LOGOUT_H
 #define LOGOUT_H
 
-#include "../MemberCollection/MemberCollection.h"
+#include "MemberCollection.h"
 #include <string>
 
 class LogOutUI;

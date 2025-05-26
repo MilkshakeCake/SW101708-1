@@ -2,7 +2,7 @@
 #define MEMBERCOLLECTION_H
 
 #include <vector>
-#include "../Member/Member.h"
+#include "Member.h"
 
 class MemberCollection
 {
@@ -16,6 +16,7 @@ public:
 
     // getter and setter
     const std::string getCurrentMember() const;
+    void setCurrentMember(const std::string &userID);
     const std::vector<Member> &getMembers() const;
 
     // functional implementation

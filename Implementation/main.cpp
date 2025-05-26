@@ -2,20 +2,20 @@
 #include <fstream>
 #include <string>
 
-#include "BicycleCollection/BicycleCollection.h"
-#include "MemberCollection/MemberCollection.h"
-#include "SignUp/SignUp.h"
-#include "SignUp/SignUpUI.h"
-#include "Login/Login.h"
-#include "Login/LoginUI.h"
-#include "LogOut/LogOut.h"
-#include "LogOut/LogOutUI.h"
-#include "RegisterBicycle/RegisterBicycle.h"
-#include "RegisterBicycle/RegisterBicycleUI.h"
-#include "RentBicycle/RentBicycle.h"
-#include "RentBicycle/RentBicycleUI.h"
-#include "QueryBicycle/QueryBicycle.h"
-#include "QueryBicycle/QueryBicycleUI.h"
+#include "BicycleCollection.h"
+#include "MemberCollection.h"
+#include "SignUp.h"
+#include "SignUpUI.h"
+#include "Login.h"
+#include "LoginUI.h"
+#include "LogOut.h"
+#include "LogOutUI.h"
+#include "RegisterBicycle.h"
+#include "RegisterBicycleUI.h"
+#include "RentBicycle.h"
+#include "RentBicycleUI.h"
+#include "QueryBicycle.h"
+#include "QueryBicycleUI.h"
 
 // DECLARE CONSTANTS
 #define MAX_STRING 32
@@ -57,8 +57,12 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
 
     while (!is_program_exit)
     {
+        int menu_level_1 = 0, menu_level_2 = 0;
+
         // 입력파일에서 메뉴 숫자 2개를 읽기
         in_fp >> menu_level_1 >> menu_level_2;
+
+        out_fp << menu_level_1 << '.' << menu_level_2;
 
         // 메뉴 구분 및 해당 연산 수행
         switch (menu_level_1)
@@ -68,20 +72,21 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
         {
             switch (menu_level_2)
             {
-            // 1.1
+            // 1.1 Sign Up
             case 1:
             {
+                out_fp << ". 회원 가입\n";
                 string id, pw, phone;
                 in_fp >> id >> pw >> phone;
                 SignUp signUpControl(mCollection);
                 SignUpUI *signUpBoundary = signUpControl.getBoundary();
                 signUpBoundary->createAccount(id, pw, phone);
-                break;
+                continue;
             }
             // 1.2 - Nonexistent input case
             case 2:
             {
-                break;
+                continue;
             }
             }
         }
@@ -93,21 +98,23 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
             // 2.1 : log in
             case 1:
             {
+                out_fp << ". 로그인\n";
                 string id, pw;
                 in_fp >> id >> pw;
                 Login loginControl(mCollection);
                 LoginUI *loginBoundary = loginControl.getBoundary();
                 loginBoundary->login(id, pw);
-                break;
+                continue;
             }
 
             // 2.2 : log out
             case 2:
             {
+                out_fp << ". 로그아웃\n";
                 LogOut logOutControl(mCollection);
                 LogOutUI *logOutBoundary = logOutControl.getBoundary();
                 logOutBoundary->logOut();
-                break;
+                continue;
             }
             }
         }
@@ -120,16 +127,17 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
             // 3.1 : register bicycle
             case 1:
             {
+                out_fp << ". 자전거 등록\n";
                 string id, maker;
                 in_fp >> id >> maker;
                 RegisterBicycle registerBicycleControl(bCollection);
                 RegisterBicycleUI *registerBicycleBoundary = registerBicycleControl.getBoundary();
                 registerBicycleBoundary->addBicycle(id, maker);
-                break;
+                continue;
             }
             default:
             {
-                break;
+                continue;
             }
             }
         }
@@ -142,15 +150,16 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
             // 4.1 : rent bicycle
             case 1:
             {
+                out_fp << ". 자전거 대여\n";
                 string id;
                 in_fp >> id;
                 RentBicycle rentBicycleControl(bCollection);
                 RentBicycleUI *rentBicycleBoundary = rentBicycleControl.getBoundary();
                 rentBicycleBoundary->rentBicycleByID(id);
-                break;
+                continue;
             }
             default:
-                break;
+                continue;
             }
         }
 
@@ -161,13 +170,14 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
             // 5.1 : query bicycle list
             case 1:
             {
+                out_fp << ". 자전거 대여 리스트\n";
                 QueryBicycle queryBicycleControl(bCollection);
                 QueryBicycleUI *queryBicycleBoundary = queryBicycleControl.getBoundary();
                 queryBicycleBoundary->queryBicycleList();
-                break;
+                continue;
             }
             default:
-                break;
+                continue;
             }
         }
 
@@ -179,8 +189,9 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
             // 6.1 : exit program
             case 1:
             {
+                out_fp << ". 종료\n";
                 is_program_exit = 1;
-                break;
+                continue;
             }
             }
         }

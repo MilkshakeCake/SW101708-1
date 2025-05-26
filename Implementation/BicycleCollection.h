@@ -2,7 +2,7 @@
 #define BICYCLECOLLECTION_H
 
 #include <vector>
-#include "../Bicycle/Bicycle.h"
+#include "Bicycle.h"
 
 class BicycleCollection
 {

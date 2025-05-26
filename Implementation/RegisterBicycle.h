@@ -1,7 +1,7 @@
 #ifndef REGISTERBICYCLE_H
 #define REGISTERBICYCLE_H
 
-#include "../BicycleCollection/BicycleCollection.h"
+#include "BicycleCollection.h"
 
 class RegisterBicycleUI;
 

@@ -1,7 +1,7 @@
 #ifndef RENTBICYCLE_H
 #define RENTBICYCLE_H
 
-#include "../BicycleCollection/BicycleCollection.h"
+#include "BicycleCollection.h"
 
 class RentBicycleUI;
 

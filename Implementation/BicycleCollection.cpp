@@ -20,4 +20,6 @@ Bicycle BicycleCollection::rentBicycle(const std::string &id)
             return i;
         }
     }
+
+    return bicycles[0];
 }
