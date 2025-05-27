@@ -1,3 +1,7 @@
+// main.cpp
+// Entry point of the bicycle rental management program.
+// Initializes resources, handles user input processing, and routes control logic.
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -25,6 +29,9 @@
 #define OUTPUT_FILE_NAME "output.txt"
 
 // DECLARE FUNCTIONS
+// Processes user commands from input and routes them to the appropriate control classes.
+// @param bCollection Pointer to the BicycleCollection instance.
+// @param mCollection Pointer to the MemberCollection instance.
 void doTask(BicycleCollection *bCollection, MemberCollection *mCollection);
 
 // DECLARE VARIABLES
@@ -33,6 +40,8 @@ std::fstream in_fp;
 
 using namespace std;
 
+// Initializes file streams, collections, and starts task execution.
+// @return Exit status of the program.
 int main()
 {
     // Initialize file streams for input and output operations
@@ -69,7 +78,7 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
         // Route logic based on top-level menu selection
         switch (menu_level_1)
         {
-        // 1
+        // Case 1: Member Sign Up
         case 1:
         {
             switch (menu_level_2)
@@ -87,7 +96,7 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
             }
             }
         }
-        // 2 : Log in / Log out
+        // Case 2: Login/Logout
         case 2:
         {
             switch (menu_level_2)
@@ -116,7 +125,7 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
             }
         }
 
-        // 3
+        // Case 3: Register Bicycle
         case 3:
         {
             switch (menu_level_2)
@@ -135,7 +144,7 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
             }
         }
 
-        // 4
+        // Case 4: Rent Bicycle
         case 4:
         {
             switch (menu_level_2)
@@ -154,7 +163,7 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
             }
         }
 
-        // 5
+        // Case 5: Query Rented Bicycles
         case 5:
         {
             switch (menu_level_2)
@@ -171,7 +180,7 @@ void doTask(BicycleCollection *bCollection, MemberCollection *mCollection)
             }
         }
 
-        // 6 : Exit program
+        // Case 6: Program Exit
         case 6:
         {
             switch (menu_level_2)

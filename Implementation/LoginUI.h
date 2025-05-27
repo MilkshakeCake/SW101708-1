@@ -1,3 +1,6 @@
+// LoginUI.h
+// Declares the LoginUI class which acts as the boundary for login-related user input.
+
 #ifndef LOGINUI_H
 #define LOGINUI_H
 
@@ -6,6 +9,7 @@
 // Forward Declaration
 class Login;
 
+// Boundary class responsible for receiving login input and delegating actions to the Login controller.
 class LoginUI
 {
 private:
@@ -13,10 +17,13 @@ private:
     Login *controller;
 
 public:
-    // Constructor
+    // Constructs a LoginUI object and associates it with a Login controller.
+    // @param loginController Pointer to the associated Login control class.
     LoginUI(Login *loginController);
 
-    // Call control for log in functionality
+    // Handles the login action by forwarding input to the controller.
+    // @param id The user ID.
+    // @param pw The user password.
     void login(const std::string &id, const std::string &pw);
 };
 
